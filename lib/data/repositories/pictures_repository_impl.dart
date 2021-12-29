@@ -9,10 +9,10 @@ import 'package:astronaut/data/datasources/remote/state/sucess_state.dart';
 import 'package:astronaut/domain/repositories/pictures_repository.dart';
 import 'package:dio/dio.dart';
 
-class PicturesRepositoryImpl extends PicturesRepository {
+class PicturesRepositoryImpl implements PicturesRepository {
   final NasaRestClient _nasaRestClient;
 
-  PicturesRepositoryImpl(this._nasaRestClient);
+  const PicturesRepositoryImpl(this._nasaRestClient);
 
   @override
   Future<RequestState<List<RemoteNasaPicture>>> getNasaPictures(
