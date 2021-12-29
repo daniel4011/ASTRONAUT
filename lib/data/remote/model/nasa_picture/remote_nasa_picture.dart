@@ -2,11 +2,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../remote_data_model.dart';
 
-part 'remote_astronomy_picture.g.dart';
+part 'remote_nasa_picture.g.dart';
 
 @JsonSerializable()
-class RemoteAstronomyPicture extends RemoteDataModel {
-  RemoteAstronomyPicture({
+class RemoteNasaPicture extends RemoteDataModel {
+  RemoteNasaPicture({
     required this.date,
     required this.explanation,
     required this.hdurl,
@@ -24,8 +24,8 @@ class RemoteAstronomyPicture extends RemoteDataModel {
   late final String title;
   late final String url;
 
-  factory RemoteAstronomyPicture.fromJson(Map<String, dynamic> json) =>
-      _$RemoteAstronomyPictureFromJson(json);
+  factory RemoteNasaPicture.fromJson(Map<String, dynamic> json) =>
+      _$RemoteNasaPictureFromJson(json);
 
-  Map<String, dynamic> toJson() => _$RemoteAstronomyPictureToJson(this);
+  Map<String, dynamic> toJson() => _$RemoteNasaPictureToJson(this);
 }
