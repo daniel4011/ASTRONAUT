@@ -1,4 +1,4 @@
 class ApiConstants {
-  static const String BASE_URL = "DEMO_KEY";
-  static const String API_URL = "https://api.nasa.gov/";
+  static const String API_KEY = "OI3Wn0aUhx4zcK3MwSusKJZwyw4y5YELak8eJ42h";
+  static const String BASE_URL = "https://api.nasa.gov/";
 }
