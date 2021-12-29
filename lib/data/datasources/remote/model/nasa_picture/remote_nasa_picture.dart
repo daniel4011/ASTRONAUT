@@ -9,18 +9,19 @@ class RemoteNasaPicture {
     required this.explanation,
     required this.hdurl,
     required this.mediaType,
-    required this.serviceVersion,
     required this.title,
     required this.url,
+    required this.copyright,
   });
 
   final String? date;
   final String? explanation;
   final String? hdurl;
+  @JsonKey(name: 'media_type')
   final String? mediaType;
-  final String? serviceVersion;
   final String? title;
-  final String? url;
+  final String url;
+  final String? copyright;
 
   factory RemoteNasaPicture.fromJson(Map<String, dynamic> json) =>
       _$RemoteNasaPictureFromJson(json);

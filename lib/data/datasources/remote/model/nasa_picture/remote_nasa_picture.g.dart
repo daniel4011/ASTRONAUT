@@ -11,10 +11,10 @@ RemoteNasaPicture _$RemoteNasaPictureFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String?,
       explanation: json['explanation'] as String?,
       hdurl: json['hdurl'] as String?,
-      mediaType: json['mediaType'] as String?,
-      serviceVersion: json['serviceVersion'] as String?,
+      mediaType: json['media_type'] as String?,
       title: json['title'] as String?,
-      url: json['url'] as String?,
+      url: json['url'] as String,
+      copyright: json['copyright'] as String?,
     );
 
 Map<String, dynamic> _$RemoteNasaPictureToJson(RemoteNasaPicture instance) =>
@@ -22,8 +22,8 @@ Map<String, dynamic> _$RemoteNasaPictureToJson(RemoteNasaPicture instance) =>
       'date': instance.date,
       'explanation': instance.explanation,
       'hdurl': instance.hdurl,
-      'mediaType': instance.mediaType,
-      'serviceVersion': instance.serviceVersion,
+      'media_type': instance.mediaType,
       'title': instance.title,
       'url': instance.url,
+      'copyright': instance.copyright,
     };
