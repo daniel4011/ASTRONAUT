@@ -8,7 +8,7 @@ part of 'nasa_rest_client.dart';
 
 class _NasaRestClient implements NasaRestClient {
   _NasaRestClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'DEMO_KEY';
+    baseUrl ??= 'https://api.nasa.gov/';
   }
 
   final Dio _dio;
@@ -17,7 +17,7 @@ class _NasaRestClient implements NasaRestClient {
 
   @override
   Future<HttpResponse<List<RemoteNasaPicture>>> getNasaPictures(
-      {apiKey = ApiConstants.API_URL,
+      {apiKey = ApiConstants.API_KEY,
       required startDate,
       required endDate}) async {
     const _extra = <String, dynamic>{};
@@ -44,7 +44,7 @@ class _NasaRestClient implements NasaRestClient {
 
   @override
   Future<HttpResponse<List<RemoteNasaPicture>>> getRandomNasaPictures(
-      {apiKey = ApiConstants.API_URL, required count}) async {
+      {apiKey = ApiConstants.API_KEY, required count}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
