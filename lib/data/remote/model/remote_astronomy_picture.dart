@@ -1,4 +1,6 @@
-class RemoteAstronomyPicture {
+import 'RemoteDataModel.dart';
+
+class RemoteAstronomyPicture extends RemoteDataModel {
   RemoteAstronomyPicture({
     required this.date,
     required this.explanation,
@@ -17,7 +19,7 @@ class RemoteAstronomyPicture {
   late final String title;
   late final String url;
 
-  RemoteAstronomyPicture.fromJson(Map<String, dynamic> json) {
+  fromJson(Map<String, dynamic> json) {
     date = json['date'];
     explanation = json['explanation'];
     hdurl = json['hdurl'];
