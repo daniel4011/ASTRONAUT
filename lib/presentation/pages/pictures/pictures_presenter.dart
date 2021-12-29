@@ -30,7 +30,7 @@ class PicturesPresenterImpl implements PicturesPresenter {
 
   fetchPictures() async {
     final pictures = await repository.getNasaPictures(
-        startDate: "2021-01-01", endDate: "2021-01-05");
+        startDate: "2021-01-01", endDate: "2021-01-10");
     if (pictures.responseData != null) {
       _pictures.value = pictures.responseData ?? [];
     }

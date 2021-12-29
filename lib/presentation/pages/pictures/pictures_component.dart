@@ -1,17 +1,17 @@
 import 'package:astronaut/data/datasources/remote/model/nasa_picture/remote_nasa_picture.dart';
-import 'package:astronaut/presentation/pages/pictures/nasa_pictures_grid.dart';
+import 'package:astronaut/presentation/pages/pictures/media_grid.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'pictures_presenter.dart';
 
-class PicturesPage extends StatefulWidget {
+class PicturesComponent extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return PicturesState();
   }
 }
 
-class PicturesState extends State<PicturesPage> {
+class PicturesState extends State<PicturesComponent> {
   final PicturesPresenter picturesPresenter = PicturesPresenterImpl();
 
   @override
@@ -19,7 +19,7 @@ class PicturesState extends State<PicturesPage> {
     return ValueListenableBuilder(
         valueListenable: picturesPresenter.pictures(),
         builder: (context, List<RemoteNasaPicture> pictures, widget) {
-          return NasaPicturesGrid(pictures: pictures);
+          return MediaGrid(pictures: pictures);
         });
   }
 
