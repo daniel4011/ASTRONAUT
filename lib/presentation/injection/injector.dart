@@ -5,6 +5,7 @@ import 'package:astronaut/domain/usecase/get_nasa_pictures_use_case.dart';
 import 'package:astronaut/domain/usecase/get_nasa_random_pictures_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 final injector = GetIt.instance;
 
@@ -15,9 +16,12 @@ Future<void> initializeDependencies() async {
   //nasa rest client
   injector.registerSingleton<NasaRestClient>(NasaRestClient(injector()));
 
+  //logger
+  injector.registerSingleton<Logger>(Logger());
+
   //repositories
   injector.registerSingleton<PicturesRepository>(
-      PicturesRepositoryImpl(injector()));
+      PicturesRepositoryImpl(injector(), injector()));
 
   //use case's
   injector.registerSingleton<FetchNasaPicturesUseCase>(

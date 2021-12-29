@@ -14,13 +14,13 @@ class RemoteNasaPicture {
     required this.url,
   });
 
-  late final String date;
-  late final String explanation;
-  late final String hdurl;
-  late final String mediaType;
-  late final String serviceVersion;
-  late final String title;
-  late final String url;
+  final String? date;
+  final String? explanation;
+  final String? hdurl;
+  final String? mediaType;
+  final String? serviceVersion;
+  final String? title;
+  final String? url;
 
   factory RemoteNasaPicture.fromJson(Map<String, dynamic> json) =>
       _$RemoteNasaPictureFromJson(json);

@@ -8,11 +8,13 @@ import 'package:astronaut/data/datasources/remote/state/request_state.dart';
 import 'package:astronaut/data/datasources/remote/state/sucess_state.dart';
 import 'package:astronaut/domain/repositories/pictures_repository.dart';
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 
 class PicturesRepositoryImpl implements PicturesRepository {
   final NasaRestClient _nasaRestClient;
+  final Logger _logger;
 
-  const PicturesRepositoryImpl(this._nasaRestClient);
+  const PicturesRepositoryImpl(this._nasaRestClient, this._logger);
 
   @override
   Future<RequestState<List<RemoteNasaPicture>>> getNasaPictures(
@@ -25,8 +27,10 @@ class PicturesRepositoryImpl implements PicturesRepository {
         return SuccessState(responseData: response.data);
       }
 
+      _logger.e(response.response.statusMessage);
       return response.toErrorState();
     } on DioError catch (exception) {
+      _logger.e(exception.message);
       return ErrorState(exception);
     }
   }

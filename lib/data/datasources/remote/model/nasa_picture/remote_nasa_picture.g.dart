@@ -8,13 +8,13 @@ part of 'remote_nasa_picture.dart';
 
 RemoteNasaPicture _$RemoteNasaPictureFromJson(Map<String, dynamic> json) =>
     RemoteNasaPicture(
-      date: json['date'] as String,
-      explanation: json['explanation'] as String,
-      hdurl: json['hdurl'] as String,
-      mediaType: json['mediaType'] as String,
-      serviceVersion: json['serviceVersion'] as String,
-      title: json['title'] as String,
-      url: json['url'] as String,
+      date: json['date'] as String?,
+      explanation: json['explanation'] as String?,
+      hdurl: json['hdurl'] as String?,
+      mediaType: json['mediaType'] as String?,
+      serviceVersion: json['serviceVersion'] as String?,
+      title: json['title'] as String?,
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$RemoteNasaPictureToJson(RemoteNasaPicture instance) =>

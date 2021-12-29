@@ -1,4 +1,5 @@
 import 'package:astronaut/presentation/injection/injector.dart';
+import 'package:astronaut/presentation/pages/pictures/pictures_page.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -12,34 +13,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Astronaut',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: NavigationPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
+class NavigationPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _NavigationPageState createState() => _NavigationPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        )));
+    return Scaffold(body: PicturesPage());
   }
 }
