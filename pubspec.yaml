@@ -9,7 +9,7 @@ environment:
   sdk: ">=2.13.4 <3.0.0"
 
 dependencies:
-
+  dio: 4.0.4
   retrofit: 3.0.1
 
   flutter:
