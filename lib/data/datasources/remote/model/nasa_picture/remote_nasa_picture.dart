@@ -1,11 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../remote_data_model.dart';
-
 part 'remote_nasa_picture.g.dart';
 
 @JsonSerializable()
-class RemoteNasaPicture extends RemoteDataModel {
+class RemoteNasaPicture {
   RemoteNasaPicture({
     required this.date,
     required this.explanation,
