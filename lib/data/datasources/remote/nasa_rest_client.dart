@@ -6,7 +6,7 @@ import 'model/nasa_picture/remote_nasa_picture.dart';
 
 part 'nasa_rest_client.g.dart';
 
-//Generate models with 'flutter pub run build_runner build' command.
+//Generate models with 'flutter pub run build_runner build --delete-conflicting-outputs' command.
 @RestApi(baseUrl: ApiConstants.BASE_URL)
 abstract class NasaRestClient {
   factory NasaRestClient(Dio dio, {String baseUrl}) = _NasaRestClient;
