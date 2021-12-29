@@ -1,4 +1,4 @@
-import 'RemoteDataModel.dart';
+import 'remote_data_model.dart';
 
 class RemoteAstronomyPicture extends RemoteDataModel {
   RemoteAstronomyPicture({
