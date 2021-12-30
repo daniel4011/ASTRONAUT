@@ -19,12 +19,14 @@ class _NasaRestClient implements NasaRestClient {
   Future<HttpResponse<List<RemoteNasaPicture>>> getNasaPictures(
       {apiKey = ApiConstants.API_KEY,
       required startDate,
-      required endDate}) async {
+      required endDate,
+      thumbs = true}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'start_date': startDate,
-      r'end_date': endDate
+      r'end_date': endDate,
+      r'thumbs': thumbs
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -44,11 +46,12 @@ class _NasaRestClient implements NasaRestClient {
 
   @override
   Future<HttpResponse<List<RemoteNasaPicture>>> getRandomNasaPictures(
-      {apiKey = ApiConstants.API_KEY, required count}) async {
+      {apiKey = ApiConstants.API_KEY, required count, thumbs = true}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
-      r'count': count
+      r'count': count,
+      r'thumbs': thumbs
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

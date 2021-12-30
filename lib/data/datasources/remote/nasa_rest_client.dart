@@ -16,11 +16,13 @@ abstract class NasaRestClient {
     @Query("api_key") String apiKey = ApiConstants.API_KEY,
     @Query("start_date") required String startDate,
     @Query("end_date") required String endDate,
+    @Query("thumbs") bool thumbs = true,
   });
 
   @GET("/planetary/apod")
   Future<HttpResponse<List<RemoteNasaPicture>>> getRandomNasaPictures({
     @Query("api_key") String apiKey = ApiConstants.API_KEY,
     @Query("count") required int count,
+    @Query("thumbs") bool thumbs = true,
   });
 }
