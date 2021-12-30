@@ -1,11 +1,11 @@
-import 'package:astronaut/data/datasources/remote/model/nasa_picture/remote_nasa_picture.dart';
+import 'package:astronaut/data/datasources/local/entity/picture_entity.dart';
+import 'package:astronaut/presentation/core/media_type.dart';
 import 'package:astronaut/presentation/pages/pictures/picture_item.dart';
-import 'package:astronaut/presentation/utils/media_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MediaGrid extends StatelessWidget {
-  final List<RemoteNasaPicture> pictures;
+  final List<Picture> pictures;
 
   MediaGrid({required this.pictures});
 

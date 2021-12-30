@@ -1,25 +1,29 @@
-import 'package:astronaut/data/datasources/remote/model/nasa_picture/remote_nasa_picture.dart';
-import 'package:astronaut/domain/repositories/pictures_repository.dart';
+import 'package:astronaut/data/datasources/local/entity/picture_entity.dart';
+import 'package:astronaut/domain/usecase/fetch_nasa_pictures_use_case.dart';
+import 'package:astronaut/domain/usecase/get_saved_pictures_use_case.dart';
+import 'package:astronaut/presentation/core/constants.dart';
 import 'package:astronaut/presentation/injection/injector.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:astronaut/presentation/utils/app_date_utils.dart';
+import 'package:flutter/material.dart';
 
 abstract class PicturesPresenter {
-  ValueNotifier<List<RemoteNasaPicture>> pictures();
+  ValueNotifier<List<Picture>> pictures();
 
   dispose();
 }
 
 class PicturesPresenterImpl implements PicturesPresenter {
   PicturesPresenterImpl() {
-    fetchPictures();
+    populateSavePictures();
   }
 
-  var repository = injector.get<PicturesRepository>();
+  var _getSavePicturesUseCase = injector.get<GetSavedPicturesUseCase>();
+  var _fetchPicturesUseCase = injector.get<FetchNasaPicturesUseCase>();
 
-  final ValueNotifier<List<RemoteNasaPicture>> _pictures = ValueNotifier([]);
+  final ValueNotifier<List<Picture>> _pictures = ValueNotifier([]);
 
   @override
-  ValueNotifier<List<RemoteNasaPicture>> pictures() {
+  ValueNotifier<List<Picture>> pictures() {
     return _pictures;
   }
 
@@ -28,11 +32,15 @@ class PicturesPresenterImpl implements PicturesPresenter {
     _pictures.dispose();
   }
 
-  fetchPictures() async {
-    final pictures = await repository.getNasaPictures(
-        startDate: "2021-01-01", endDate: "2021-01-10");
-    if (pictures.responseData != null) {
-      _pictures.value = pictures.responseData ?? [];
+  populateSavePictures() async {
+    final savePictures = await _getSavePicturesUseCase.invoke();
+    if (savePictures.isEmpty) {
+      final currentDate = AppDateUtils.getCurrentDate();
+      await _fetchPicturesUseCase.invoke(
+          startDate: AppDateUtils.format(currentDate.subtract(
+              Duration(days: Constants.PICTURES_PAGINATION_DATE_SUBTRACTION))),
+          endDate: AppDateUtils.format(currentDate));
     }
+    _pictures.value = savePictures;
   }
 }

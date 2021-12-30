@@ -1,8 +1,10 @@
-import 'package:astronaut/data/datasources/remote/model/nasa_picture/remote_nasa_picture.dart';
+import 'package:astronaut/data/datasources/local/entity/picture_entity.dart';
+import 'package:astronaut/presentation/injection/injector.dart';
+import 'package:astronaut/presentation/pages/pictures/picture_presenter.dart';
 import 'package:flutter/cupertino.dart';
 
 class PictureItem extends StatefulWidget {
-  final RemoteNasaPicture picture;
+  final Picture picture;
 
   PictureItem({required this.picture});
 
@@ -13,12 +15,20 @@ class PictureItem extends StatefulWidget {
 }
 
 class PictureItemState extends State<PictureItem> {
+  final PicturePresenter _presenter = injector.get<PicturePresenter>();
+
   @override
   Widget build(BuildContext context) {
-    print("url: ${widget.picture.url}");
-    return Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover, image: NetworkImage(widget.picture.url))));
+    return _getItem();
+  }
+
+  Widget _getItem() {
+    final bytes =
+        _presenter.decodeBase64(widget.picture.encodedBase64ImageFile);
+    if (bytes == null) {
+      return Text('error');
+    }
+
+    return Container(child: Image.memory(bytes));
   }
 }

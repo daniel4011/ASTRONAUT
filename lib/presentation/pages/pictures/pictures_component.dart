@@ -1,4 +1,4 @@
-import 'package:astronaut/data/datasources/remote/model/nasa_picture/remote_nasa_picture.dart';
+import 'package:astronaut/data/datasources/local/entity/picture_entity.dart';
 import 'package:astronaut/presentation/pages/pictures/media_grid.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -18,7 +18,7 @@ class PicturesState extends State<PicturesComponent> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: picturesPresenter.pictures(),
-        builder: (context, List<RemoteNasaPicture> pictures, widget) {
+        builder: (context, List<Picture> pictures, widget) {
           return MediaGrid(pictures: pictures);
         });
   }
