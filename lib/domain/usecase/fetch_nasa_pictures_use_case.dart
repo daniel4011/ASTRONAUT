@@ -9,6 +9,7 @@ class FetchNasaPicturesUseCase {
 
   Future<RequestState<List<RemoteNasaPicture>>> invoke(
       {required String startDate, required String endDate}) async {
-    return _repository.getNasaPictures(startDate: startDate, endDate: endDate);
+    return _repository.fetchNasaPictures(
+        startDate: startDate, endDate: endDate);
   }
 }
